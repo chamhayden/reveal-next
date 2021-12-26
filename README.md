@@ -1,4 +1,6 @@
-This library allows for the usage of the Reveal.js within either a NextJS or ReactJS framework.
+This library allows for the usage of the Reveal.js within either a NextJS or ReactJS framework. In short, it is a benign wrapper of (reveal.js)[https://revealjs.com/] that allows you to build slides in a componentized fashion. My recommendation would be to use NextJS for the simple directory routing structure they have.
+
+A richer library of individual reveal.js components and abstractions is still in progress. In the meantime, using the raw/vanilla HTML components is adequate.
 
 ## Installation
 
