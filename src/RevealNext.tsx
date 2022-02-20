@@ -30,7 +30,7 @@ export default (type: FrameworkType) => {
         import('reveal.js/plugin/markdown/markdown.esm.js'),
         import('reveal.js/plugin/highlight/highlight'),
         import('reveal.js/plugin/notes/notes'),
-        import('./RevealTheme-' + useTheme),
+        import('./RevealTheme-black.js'),
       ]).then(values => {
         const [Reveal, Markdown, Highlight, Notes] = values;
         const rootProp = document.querySelector(rootId);
