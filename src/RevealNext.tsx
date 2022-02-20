@@ -4,20 +4,20 @@ import 'reveal.js/dist/reveal.css';
 import 'reveal.js/dist/reset.css';
 import 'reveal.js/plugin/highlight/monokai.css';
 
-type Themes = 'black' | 'white' | 'league' | 'beige' | 'sky' | 'night' | 'serif' | 'simple' | 'solarized' | 'blood' | 'moon'
+type Theme = "black" | "white" | "league" | "beige" | "sky" | "night" | "serif" | "simple" | "solarized" | "blood" | "moon";
 
-const themes: Themes[] = ['black', 'white', 'league', 'beige', 'sky', 'night', 'serif', 'simple', 'solarized', 'blood', 'moon'];
+const themes: Theme[] = ['black', 'white', 'league', 'beige', 'sky', 'night', 'serif', 'simple', 'solarized', 'blood', 'moon'];
 
 type Options = {
-  theme?: Themes;
+  theme?: string;
 };
 
 export default (type: FrameworkType) => {
-  return ({ children, options }: { children: React.FC, options: Options }) => {
+  return ({ children, options }: { children: React.FC, options?: Options }) => {
     const rootId = (type === 'ReactJS' ? '#root' : '#__next');
     const [loaded, setLoaded] = React.useState(false);
     React.useEffect(() => {
-      let useTheme = options.theme ?? 'black';
+      let useTheme = options && options.theme ? options.theme : 'black';
       if (window) {
         themes.forEach(theme => {
           if (window.location.href.includes(`theme=${theme}`)) {

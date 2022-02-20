@@ -4,7 +4,7 @@ const autoprefixer = require('autoprefixer');
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import sourcemaps from 'rollup-plugin-sourcemaps';
-
+import typescript from '@rollup/plugin-typescript';
 // the entry point for the library
 const input = 'index.js'
 
@@ -32,7 +32,7 @@ MODE.map((m) => {
         input: input,
         output: {
             // then name of your package
-            name: "reveal-next",
+            name: "reveal-react",
             dir: `dist/`,
             format: m.fomart,
             exports: "auto",
@@ -49,6 +49,7 @@ MODE.map((m) => {
             /@babel\/runtime/
         ],
         plugins: [
+            typescript(),
             resolve(),
             // these are babel comfigurations
             babel({
