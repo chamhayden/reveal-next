@@ -28,17 +28,6 @@ var config = []
 
 const inputs = [
     'index.js',
-    /*'src/RevealTheme-beige.jsx',
-    'src/RevealTheme-black.jsx',
-    'src/RevealTheme-blood.jsx',
-    'src/RevealTheme-league.jsx',
-    'src/RevealTheme-moon.jsx',
-    'src/RevealTheme-night.jsx',
-    'src/RevealTheme-serif.jsx',
-    'src/RevealTheme-simple.jsx',
-    'src/RevealTheme-sky.jsx',
-    'src/RevealTheme-solarized.jsx',
-    'src/RevealTheme-white.jsx',*/
 ];
 
 MODE.map((m) => {
