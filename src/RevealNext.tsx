@@ -2,19 +2,35 @@ import React from 'react';
 
 import 'reveal.js/dist/reveal.css';
 import 'reveal.js/dist/reset.css';
-import 'reveal.js/dist/theme/black.css';
 import 'reveal.js/plugin/highlight/monokai.css';
 
+type Themes = 'black' | 'white' | 'league' | 'beige' | 'sky' | 'night' | 'serif' | 'simple' | 'solarized' | 'blood' | 'moon'
+
+const themes: Themes[] = ['black', 'white', 'league', 'beige', 'sky', 'night', 'serif', 'simple', 'solarized', 'blood', 'moon'];
+
+type Options = {
+  theme?: Themes;
+};
+
 export default (type: FrameworkType) => {
-  const rootId = (type === 'ReactJS' ? '#root' : '#__next');
-  return ({ children }: { children: React.FC }) => {
+  return ({ children, options }: { children: React.FC, options: Options }) => {
+    const rootId = (type === 'ReactJS' ? '#root' : '#__next');
     const [loaded, setLoaded] = React.useState(false);
     React.useEffect(() => {
+      let useTheme = options.theme ?? 'black';
+      if (window) {
+        themes.forEach(theme => {
+          if (window.location.href.includes(`theme=${theme}`)) {
+            useTheme = theme;
+          }
+        })
+      }
       Promise.all([
         import('reveal.js'),
         import('reveal.js/plugin/markdown/markdown.esm.js'),
         import('reveal.js/plugin/highlight/highlight'),
         import('reveal.js/plugin/notes/notes'),
+        import('./themes/Reveal-' + useTheme),
       ]).then(values => {
         const [Reveal, Markdown, Highlight, Notes] = values;
         const rootProp = document.querySelector(rootId);
