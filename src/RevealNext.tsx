@@ -1,4 +1,5 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 
 import 'reveal.js/dist/reveal.css';
 import 'reveal.js/dist/reset.css';
@@ -16,6 +17,7 @@ export default (type: FrameworkType) => {
   return ({ children, options }: { children: React.FC, options?: Options }) => {
     const rootId = (type === 'ReactJS' ? '#root' : '#__next');
     const [loaded, setLoaded] = React.useState(false);
+    const [DynamicComponent, setDynamicComponent] = React.useState<any>(() => <></>);
     React.useEffect(() => {
       let useTheme = options && options.theme ? options.theme : 'black';
       if (window) {
@@ -25,12 +27,13 @@ export default (type: FrameworkType) => {
           }
         })
       }
+      setDynamicComponent(dynamic(() => import('./RevealTheme-black.js')));
       Promise.all([
         import('reveal.js'),
         import('reveal.js/plugin/markdown/markdown.esm.js'),
         import('reveal.js/plugin/highlight/highlight'),
         import('reveal.js/plugin/notes/notes'),
-        import('./RevealTheme-black.js'),
+        //import('./RevealTheme-black.js'),
       ]).then(values => {
         const [Reveal, Markdown, Highlight, Notes] = values;
         const rootProp = document.querySelector(rootId);
@@ -50,6 +53,6 @@ export default (type: FrameworkType) => {
         setLoaded(true);
       });
     }, []);
-    return <div className="slides">{loaded && children}</div>;
+    return <div className="slides"><DynamicComponent />{loaded && children}</div>;
   }  
 }

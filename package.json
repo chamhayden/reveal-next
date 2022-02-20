@@ -1,7 +1,7 @@
 {
   "name": "reveal-react",
   "private": false,
-  "version": "0.2.14",
+  "version": "0.2.15",
   "description": "Reveal.js in a component pattern for ReactJS or NextJS",
   "author": "Hayden Smith <hayden@bitflip.com.au> (http://bitflip.com.au)",
   "license": "ISC",
