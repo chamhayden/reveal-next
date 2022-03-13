@@ -4,9 +4,10 @@ const autoprefixer = require('autoprefixer');
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import sourcemaps from 'rollup-plugin-sourcemaps';
+import typescript from '@rollup/plugin-typescript';
 
 // the entry point for the library
-const input = 'index.js'
+const input = 'index.ts'
 
 // 
 var MODE = [
@@ -66,7 +67,8 @@ MODE.map((m) => {
                         autoprefixer()
                     ]
                 }
-            })
+            }),
+            typescript(),
         ],
     }
     config.push(conf)

@@ -5,9 +5,11 @@ import 'reveal.js/dist/reset.css';
 import 'reveal.js/dist/theme/black.css';
 import 'reveal.js/plugin/highlight/monokai.css';
 
+type FrameworkType = 'ReactJS' | 'NextJS'
+
 export default (type: FrameworkType) => {
   const rootId = (type === 'ReactJS' ? '#root' : '#__next');
-  return ({ children }: { children: React.FC }) => {
+  return ({ children, options }: { children: React.FC, options: any }) => {
     const [loaded, setLoaded] = React.useState(false);
     React.useEffect(() => {
       Promise.all([
@@ -22,7 +24,8 @@ export default (type: FrameworkType) => {
           rootProp.className = "reveal";
         }
         let deck = new Reveal.default({
-           plugins: [ Markdown.default, Notes.default, Highlight.default ]
+           plugins: [ Markdown.default, Notes.default, Highlight.default ],
+           ...options,
         })
         deck.initialize().then(() => {
           deck.on('slidechanged', ({ indexh, indexv, currentSlide }: SlideChangeProps) => {

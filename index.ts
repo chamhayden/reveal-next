@@ -1,4 +1,4 @@
-import RevealNext from './src/RevealNext.jsx';
+import RevealNext from './src/RevealNext';
 
 module.exports = {
 	'RevealNext': RevealNext("NextJS"),
