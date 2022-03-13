@@ -5,6 +5,8 @@ import 'reveal.js/dist/reset.css';
 import 'reveal.js/dist/theme/black.css';
 import 'reveal.js/plugin/highlight/monokai.css';
 
+type FrameworkType = 'ReactJS' | 'NextJS'
+
 export default (type: FrameworkType) => {
   const rootId = (type === 'ReactJS' ? '#root' : '#__next');
   return ({ children, options }: { children: React.FC, options: any }) => {
