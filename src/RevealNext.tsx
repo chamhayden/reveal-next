@@ -9,10 +9,10 @@ type FrameworkType = 'ReactJS' | 'NextJS'
 
 export default (type: FrameworkType) => {
   const rootId = (type === 'ReactJS' ? '#root' : '#__next');
-  return ({ children, options, load = true }: { children: React.FC, options: any, load: boolean }) => {
+  return ({ children, options, wait }: { children: React.FC, options: any, wait: any }) => {
     const [loaded, setLoaded] = React.useState(false);
     React.useEffect(() => {
-      if (load) {
+      if (!wait) {
         Promise.all([
           import('reveal.js'),
           import('reveal.js/plugin/markdown/markdown.esm.js'),
@@ -38,7 +38,7 @@ export default (type: FrameworkType) => {
           setLoaded(true);
         });
       }
-    }, [load]);
+    }, [wait]);
     return <div className="slides">{loaded && children}</div>;
   }  
 }

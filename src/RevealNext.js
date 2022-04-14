@@ -17,10 +17,10 @@ import 'reveal.js/plugin/highlight/monokai.css';
 export default (function (type) {
     var rootId = (type === 'ReactJS' ? '#root' : '#__next');
     return function (_a) {
-        var children = _a.children, options = _a.options, _b = _a.load, load = _b === void 0 ? true : _b;
-        var _c = React.useState(false), loaded = _c[0], setLoaded = _c[1];
+        var children = _a.children, options = _a.options, wait = _a.wait;
+        var _b = React.useState(false), loaded = _b[0], setLoaded = _b[1];
         React.useEffect(function () {
-            if (load) {
+            if (!wait) {
                 Promise.all([
                     import('reveal.js'),
                     import('reveal.js/plugin/markdown/markdown.esm.js'),
@@ -44,7 +44,7 @@ export default (function (type) {
                     setLoaded(true);
                 });
             }
-        }, [load]);
+        }, [wait]);
         return React.createElement("div", { className: "slides" }, loaded && children);
     };
 });
