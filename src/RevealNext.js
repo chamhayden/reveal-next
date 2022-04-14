@@ -13,7 +13,6 @@ import React from 'react';
 import 'reveal.js/dist/reveal.css';
 import 'reveal.js/dist/reset.css';
 import 'reveal.js/dist/theme/black.css';
-import 'reveal.js/plugin/highlight/monokai.css';
 export default (function (type) {
     var rootId = (type === 'ReactJS' ? '#root' : '#__next');
     return function (_a) {

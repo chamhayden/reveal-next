@@ -3,7 +3,7 @@ import React from 'react';
 import 'reveal.js/dist/reveal.css';
 import 'reveal.js/dist/reset.css';
 import 'reveal.js/dist/theme/black.css';
-import 'reveal.js/plugin/highlight/monokai.css';
+//import 'reveal.js/plugin/highlight/monokai.css';
 
 type FrameworkType = 'ReactJS' | 'NextJS'
 
